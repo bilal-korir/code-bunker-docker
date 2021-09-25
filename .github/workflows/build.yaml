@@ -1,5 +1,7 @@
 on: [push]
+
 name: build
+
 jobs:
   build:
     name: Build docker image
