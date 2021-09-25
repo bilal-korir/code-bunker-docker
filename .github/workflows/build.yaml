@@ -20,3 +20,7 @@ jobs:
       - name: Build docker image
         run: docker build -t ${{ steps.determine_tag.outputs.image_full }} .
         working-directory: ./app
+      - name: Push docker image
+        run: |
+          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ilyamochalov --password-stdin
+          docker push ${{ steps.determine_tag.outputs.image_full }}
